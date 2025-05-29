@@ -1,0 +1,51 @@
+return require('packer').startup(function(use)
+     	--hrsh7th
+  	use 'hrsh7th/nvim-cmp' 
+    	use 'hrsh7th/cmp-nvim-lsp'
+    	use 'hrsh7th/cmp-nvim-lua'
+    	use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    	use 'hrsh7th/cmp-vsnip'                             
+    	use 'hrsh7th/cmp-path'                              
+    	use 'hrsh7th/cmp-buffer'                            
+    	use 'hrsh7th/vim-vsnip'
+	use 'wbthomason/packer.nvim'
+ 	use 'williamboman/mason.nvim'   
+ 	use 'williamboman/mason-lspconfig.nvim'
+ 	use 'neovim/nvim-lspconfig'
+	-- styling
+ 	use 'Mofiqul/dracula.nvim'
+	use 'folke/tokyonight.nvim'
+	use 'navarasu/onedark.nvim'
+	use 'marko-cerovac/material.nvim'
+	use {'catppuccin/nvim', as = 'catppuccin'}
+	-- File Explorer tree
+	use {
+  		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons',     
+		},
+ 	}
+	-- DAP
+	use 'mfussenegger/nvim-dap'
+	use 'nvim-neotest/nvim-nio'
+
+	use {
+ 		'rcarriga/nvim-dap-ui',
+		requires = {
+			'mfussenegger/nvim-dap',
+			'nvim-neotest/nvim-nio',
+		},
+		config = function()
+			require("dapui").setup()
+  		end,
+	}
+	use {
+  -- recommended packer way of installing it is to run this function, copied from documentation
+         'nvim-treesitter/nvim-treesitter',
+		run = function()
+              		local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+              		ts_update()
+         	end,
+	}
+end)
+
