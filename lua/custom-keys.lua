@@ -1,5 +1,10 @@
 local map = vim.api.nvim_set_keymap
 
+---------------------------------
+--- Editing and Navigation ------
+vim.keymap.set('n', 'L', '$', { noremap = true })  -- 跳到行尾
+vim.keymap.set('n', 'H', '^', { noremap = true })  -- 跳到行首
+
 ----------------------------------
 -----------Tab Navigation---------
 ----------------------------------
