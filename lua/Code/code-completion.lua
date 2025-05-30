@@ -12,8 +12,8 @@ cmp.setup({
  
 mapping = {
   -- Tab / Shift+Tab：浏览候选项
-  ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-  ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+  ['<Down>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+  ['<Up>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 
   -- 文档滚动
   ['<C-f>'] = cmp.mapping.scroll_docs(4),

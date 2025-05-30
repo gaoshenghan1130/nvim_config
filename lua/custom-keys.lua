@@ -1,5 +1,16 @@
 local map = vim.api.nvim_set_keymap
 
+----------------------------------
+-----------Tab Navigation---------
+----------------------------------
+-- 新建标签页
+vim.keymap.set('n', '<leader>tn', ':tabnew<CR>', { silent = true })
+-- 关闭标签页
+vim.keymap.set('n', '<leader>tc', ':tabclose<CR>', { silent = true })
+-- 下一个标签页
+vim.keymap.set('n', '<leader>tl', ':tabnext<CR>', { silent = true })
+-- 上一个标签页
+vim.keymap.set('n', '<leader>th', ':tabprev<CR>', { silent = true })
 
 ----------------------------------
 -------- Terminal Mode -----------

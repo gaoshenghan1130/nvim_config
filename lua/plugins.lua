@@ -12,6 +12,27 @@ return require('packer').startup(function(use)
  	use 'williamboman/mason.nvim'   
  	use 'williamboman/mason-lspconfig.nvim'
  	use 'neovim/nvim-lspconfig'
+	
+	--formatting
+	
+	use 'wbthomason/packer.nvim'
+
+
+  	
+	use 'mhartington/formatter.nvim'
+	-- LSP
+	use 'L3MON4D3/LuaSnip'
+	use 'saadparwaiz1/cmp_luasnip'
+	
+	-- Terminal 
+	use {
+  		"akinsho/toggleterm.nvim",
+  		tag = '*',
+  		config = function()
+    			require("toggleterm").setup()
+  		end
+	}
+
 	-- styling
  	use 'Mofiqul/dracula.nvim'
 	use 'folke/tokyonight.nvim'
