@@ -9,8 +9,10 @@ require('formatter').setup({
         }
       end
     },
-  }
+}
 })
 
 vim.api.nvim_set_keymap("n", "<leader>f", ":Format<CR>", { noremap = true, silent = true })
+
+vim.o.number = true
 

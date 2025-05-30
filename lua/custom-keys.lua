@@ -19,7 +19,7 @@ vim.keymap.set('n', '<leader>th', ':tabprev<CR>', { silent = true })
 ----------------------------------
 ---------NvimTreeToggle-----------
 ----------------------------------
-vim.keymap.set('n', 'n', function()
+vim.keymap.set('n', 'tree', function()
   require("nvim-tree.api").tree.toggle()
 end, { noremap = true, silent = true })
 
