@@ -12,11 +12,6 @@ return require('packer').startup(function(use)
  	use 'williamboman/mason.nvim'   
  	use 'williamboman/mason-lspconfig.nvim'
  	use 'neovim/nvim-lspconfig'
-	
-	--formatting
-	
-	use 'wbthomason/packer.nvim'
-
 
   	
 	use 'mhartington/formatter.nvim'
@@ -32,7 +27,17 @@ return require('packer').startup(function(use)
     			require("toggleterm").setup()
   		end
 	}
-
+	-- git
+	use {
+  		'lewis6991/gitsigns.nvim',
+  		config = function()
+    			require('gitsigns').setup()
+  		end
+	}
+	use {
+ 		'kdheepak/lazygit.nvim',
+  		requires = { 'nvim-lua/plenary.nvim' },
+	}
 	-- styling
  	use 'Mofiqul/dracula.nvim'
 	use 'folke/tokyonight.nvim'
