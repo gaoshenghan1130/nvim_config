@@ -52,5 +52,16 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim', tag = '0.1.4',
     		requires = { {'nvim-lua/plenary.nvim'} }
  	}
+	-- Lualine information / Status bar
+ 	use {
+		'nvim-lualine/lualine.nvim',
+    		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+	}
+
+	--github Copliot
+	use 'github/copilot.vim'
+
+
+
 end)
 

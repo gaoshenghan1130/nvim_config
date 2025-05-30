@@ -1,12 +1,16 @@
 local map = vim.api.nvim_set_keymap
 
+
+----------------------------------
+-------- Terminal Mode -----------
+----------------------------------
+
 ----------------------------------
 ---------NvimTreeToggle-----------
 ----------------------------------
 vim.keymap.set('n', 'n', function()
   require("nvim-tree.api").tree.toggle()
 end, { noremap = true, silent = true })
-
 
 ----------------------------------
 ----------------dap---------------

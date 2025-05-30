@@ -5,7 +5,7 @@ require('gopls')
 require('file-explorer')
 require('debugging')
 require('file-finder')
-
+require('statusBar')
 
 -- Styles --
 require('style')
