@@ -40,12 +40,17 @@ return require('packer').startup(function(use)
   		end,
 	}
 	use {
-  -- recommended packer way of installing it is to run this function, copied from documentation
+	-- recommended packer way of installing it is to run this function, copied from documentation
          'nvim-treesitter/nvim-treesitter',
 		run = function()
               		local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
               		ts_update()
          	end,
 	}
+	-- Telescope used to fuzzy search files
+ 	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    		requires = { {'nvim-lua/plenary.nvim'} }
+ 	}
 end)
 
