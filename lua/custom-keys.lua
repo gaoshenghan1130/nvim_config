@@ -2,8 +2,8 @@ local map = vim.api.nvim_set_keymap
 
 ---------------------------------
 --- Editing and Navigation ------
-vim.keymap.set('n', 'L', '$', { noremap = true })  -- 跳到行尾
-vim.keymap.set('n', 'H', '^', { noremap = true })  -- 跳到行首
+vim.keymap.set('n', 'L', '$', { noremap = true }) -- 跳到行尾
+vim.keymap.set('n', 'H', '^', { noremap = true }) -- 跳到行首
 
 ----------------------------------
 -----------Tab Navigation---------
@@ -25,7 +25,7 @@ vim.keymap.set('n', '<leader>th', ':tabprev<CR>', { silent = true })
 ---------NvimTreeToggle-----------
 ----------------------------------
 vim.keymap.set('n', 'tree', function()
-  require("nvim-tree.api").tree.toggle()
+    require("nvim-tree.api").tree.toggle()
 end, { noremap = true, silent = true })
 
 ----------------------------------
@@ -53,7 +53,5 @@ map('n', '<F6>', [[:lua require'dap'.repl.open()<CR>]], {})
 map('n', 'dl', [[:lua require'dap'.run_last()<CR>]], {})
 
 vim.keymap.set('n', 'd', function()
-  require("dapui").toggle()
+    require("dapui").toggle()
 end, { noremap = true, silent = true })
-
-

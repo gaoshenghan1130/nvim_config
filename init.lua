@@ -14,8 +14,9 @@ require('Terminal/ToggleTerm')
 
 -- code related plugins
 require('Code/lsp')
-require('Code/formatter')
+require('Code/formatterAndCompiler')
 require('Code/code-completion')
+require('Code/latex')
 -- Styles --
 require('style')
 require('syntax-highlight')
