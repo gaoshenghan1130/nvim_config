@@ -24,7 +24,16 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "*.tex",
     callback = function()
-        vim.cmd("VimtexCompile")
+        local file = vim.fn.expand("%:p")
+        -- 使用 vim.fn.system 执行外部命令
+        vim.fn.system("latexindent -w " .. file)
+        -- 重新加载缓冲区
+        vim.cmd("edit!")
+
+        -- 延迟调用 Vimtex 单次编译
+        vim.defer_fn(function()
+            vim.cmd("VimtexCompileSS")
+        end, 100)
     end,
 })
 
