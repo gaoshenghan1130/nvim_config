@@ -12,6 +12,23 @@ return require('packer').startup(function(use)
  	use 'williamboman/mason.nvim'   
  	use 'williamboman/mason-lspconfig.nvim'
  	use 'neovim/nvim-lspconfig'
+    use {
+    "williamboman/mason-nvim-dap.nvim",
+    requires = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason-nvim-dap").setup({
+        ensure_installed = { "codelldb" }, 
+    })
+    end
+  }
+    use {
+  "lervag/vimtex",
+  config = function()
+    vim.g.vimtex_view_method = "zathura"
+    vim.g.vimtex_compiler_method = "latexmk"
+    vim.g.vimtex_quickfix_mode = 0
+  end
+}
 
   	
 	use 'mhartington/formatter.nvim'

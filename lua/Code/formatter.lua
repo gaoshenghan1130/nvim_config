@@ -12,6 +12,11 @@ require('formatter').setup({
 }
 })
 
+-- tabs and spaces
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
 vim.api.nvim_set_keymap("n", "<leader>f", ":Format<CR>", { noremap = true, silent = true })
 
 vim.o.number = true

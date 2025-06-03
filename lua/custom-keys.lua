@@ -39,6 +39,8 @@ map('n', '<C-b>', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
 map('n', '<C-c>', [[:lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint Condition: '))<CR>]], {})
 -- Press CTRL + l to toggle Logpoint
 map('n', '<C-l>', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR>]], {})
+-- Pressing F9 to stop debugging
+map('n', '<F9>', [[:lua require('dap').terminate(); require('dapui').close()<CR>]], {})
 -- Pressing F10 to step over
 map('n', '<F10>', [[:lua require'dap'.step_over()<CR>]], {})
 -- Pressing F11 to step into
