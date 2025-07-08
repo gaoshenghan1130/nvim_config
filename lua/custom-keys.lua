@@ -52,6 +52,6 @@ map('n', '<F6>', [[:lua require'dap'.repl.open()<CR>]], {})
 -- Press dl to run last ran configuration (if you used f5 before it will re run it etc)
 map('n', 'dl', [[:lua require'dap'.run_last()<CR>]], {})
 
-vim.keymap.set('n', 'd', function()
+vim.keymap.set('n', 'debug', function()
     require("dapui").toggle()
 end, { noremap = true, silent = true })

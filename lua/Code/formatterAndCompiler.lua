@@ -25,12 +25,13 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "*.tex",
     callback = function()
         local file = vim.fn.expand("%:p")
-        -- 使用 vim.fn.system 执行外部命令
-        vim.fn.system("latexindent -w " .. file)
-        -- 重新加载缓冲区
-        vim.cmd("edit!")
-
-        -- 延迟调用 Vimtex 单次编译
+        -- 正确调用 system
+        local result = vim.fn.system({ "latexindent", "-w", "-b=0", file })
+        if vim.v.shell_error ~= 0 then
+            print("latexindent error: " .. result)
+            return
+        end
+        vim.cmd("checktime") -- 更新文件时间戳
         vim.defer_fn(function()
             vim.cmd("VimtexCompileSS")
         end, 100)

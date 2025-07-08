@@ -13,7 +13,27 @@ require('lspconfig').clangd.setup({
 })
 
 
-require('lspconfig').texlab.setup {}
+require('lspconfig').texlab.setup {
+    settings = {
+        texlab = {
+            build = {
+                executable = "latexmk",
+                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                onSave = true, -- 保存时触发编译检查
+                forwardSearchAfter = false,
+            },
+            chktex = {
+                onEdit = true, -- 编辑时检查
+                onOpenAndSave = true, -- 打开和保存时检查
+            },
+            diagnosticsDelay = 300,
+            latexFormatter = "latexindent",
+            latexindent = {
+                modifyLineBreaks = false,
+            },
+        },
+    },
+}
 
 require("lspconfig").lua_ls.setup {
     settings = {
