@@ -1,19 +1,34 @@
+local on_attach = function(client, bufnr)
+    -- 快捷键映射函数
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    local keymap = vim.keymap.set
+
+    keymap("n", "gd", vim.lsp.buf.definition, bufopts)          -- 跳转到定义
+    keymap("n", "gD", vim.lsp.buf.declaration, bufopts)         -- 跳转到声明
+    keymap("n", "gi", vim.lsp.buf.implementation, bufopts)      -- 跳转到实现
+    keymap("n", "gr", vim.lsp.buf.references, bufopts)          -- 查看引用
+    keymap("n", "K", vim.lsp.buf.hover, bufopts)                -- 文档悬浮
+    keymap("n", "<leader>rn", vim.lsp.buf.rename, bufopts)      -- 重命名
+    keymap("n", "<leader>ca", vim.lsp.buf.code_action, bufopts) -- 代码操作
+
+    -- 如果开启格式化
+    if client.server_capabilities.documentFormattingProvider then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            callback = function()
+                vim.lsp.buf.format({ async = false })
+            end,
+        })
+    end
+end
+
 require('lspconfig').clangd.setup({
-    on_attach = function(client, bufnr)
-        -- 启用格式化
-        if client.server_capabilities.documentFormattingProvider then
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                buffer = bufnr,
-                callback = function()
-                    vim.lsp.buf.format({ async = false })
-                end,
-            })
-        end
-    end,
+    on_attach = on_attach,
 })
 
 
 require('lspconfig').texlab.setup {
+    on_attach = on_attach,
     settings = {
         texlab = {
             build = {
@@ -23,7 +38,7 @@ require('lspconfig').texlab.setup {
                 forwardSearchAfter = false,
             },
             chktex = {
-                onEdit = true, -- 编辑时检查
+                onEdit = true,        -- 编辑时检查
                 onOpenAndSave = true, -- 打开和保存时检查
             },
             diagnosticsDelay = 300,
@@ -36,6 +51,7 @@ require('lspconfig').texlab.setup {
 }
 
 require("lspconfig").lua_ls.setup {
+    on_attach = on_attach,
     settings = {
         Lua = {
             diagnostics = {
