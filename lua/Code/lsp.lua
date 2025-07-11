@@ -23,6 +23,7 @@ local on_attach = function(client, bufnr)
 end
 
 require('lspconfig').clangd.setup({
+    cmd = { "clangd", "--std=c++11" },
     on_attach = on_attach,
 })
 
